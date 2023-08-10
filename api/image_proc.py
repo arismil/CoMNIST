@@ -370,3 +370,11 @@ def b64_preprocess(im):
         img = ImageOps.invert(img)
         print("Inverted image")
     return img
+
+
+def image_preprocess(img):
+    SIZE = 32
+    img = crop_resize(img, -1)
+    img = pad_resize(img, SIZE)
+    img = np.reshape(img, (1, SIZE, SIZE, 1))
+    return img
