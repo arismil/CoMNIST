@@ -8,7 +8,7 @@ import numpy as np
 from PIL import Image, ImageOps
 
 
-import image_disp
+from api import image_disp
 
 
 def load(imfile="Greg.png"):
