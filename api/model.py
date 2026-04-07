@@ -3,14 +3,16 @@
 import os
 import string
 import numpy as np
-import tensorflow as tf
 from keras.layers import (
     Dense,
     Convolution2D,
+    Activation,
     MaxPooling2D,
+    Dropout,
     Flatten,
 )
 from keras.models import Sequential
+
 from api.image_proc import crop_resize, pad_resize, crop_letters
 
 WEIGHTS_BACKUP = "weights/comnist_keras.hdf5"
@@ -77,6 +79,9 @@ def load_model(weight=None, nb_classes=26):
     if os.path.exists(weight):
         # load weights
         model.load_weights(weight)
+        print("Loaded weights from file %s" % weight)
+    else:
+        raise FileNotFoundError("No weight file found at %s" % weight)
 
     # Compile model (required to make predictions)
     model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
@@ -175,23 +180,3 @@ def load_word_predictor(weight=None, nb_classes=26, lang_in="en"):
         return word[:nb_letters]
 
     return word_predictor
-
-
-def load_dataset():
-    return tf.keras.utils.image_dataset_from_directory(
-        directory="/home/aris/Documents/CoMNIST/images/Cyrillic",
-        labels="inferred",
-        label_mode="int",
-        class_names=None,
-        color_mode="rgb",
-        batch_size=32,
-        image_size=(256, 256),
-        shuffle=True,
-        seed=None,
-        validation_split=None,
-        subset=None,
-        interpolation="bilinear",
-        follow_links=False,
-        crop_to_aspect_ratio=False,
-        **kwargs
-    )
