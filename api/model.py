@@ -61,12 +61,18 @@ def load_model(weight=None, nb_classes=26):
         )
     )
     model.add(
-        Convolution2D(nb_filters2, (kernel_size[0], kernel_size[1]), activation="relu")
+        Convolution2D(
+            nb_filters2,
+            (kernel_size[0], kernel_size[1]),
+            activation="relu",
+            )
     )
     model.add(MaxPooling2D(pool_size=pool_size))
 
     model.add(
-        Convolution2D(nb_filters3, (kernel_size[0], kernel_size[1]), activation="relu")
+        Convolution2D(nb_filters3,
+                      (kernel_size[0], kernel_size[1]),
+                      activation="relu")
     )
     model.add(MaxPooling2D(pool_size=pool_size))
 
@@ -84,7 +90,11 @@ def load_model(weight=None, nb_classes=26):
         raise FileNotFoundError("No weight file found at %s" % weight)
 
     # Compile model (required to make predictions)
-    model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
+    model.compile(
+        loss="binary_crossentropy",
+        optimizer="adam",
+        metrics=["accuracy"])
+    
     print("Created model and loaded weights from file")
 
     return model

@@ -28,8 +28,6 @@ for class_dir in data_dir.iterdir():
         # Get all image files in the class directory
         images = list(class_dir.glob("*.png"))
 
-        # Shuffle the images
-        random.shuffle(images)
 
         # Split the images
         split_index = int(len(images) * split_ratio)
@@ -38,9 +36,9 @@ for class_dir in data_dir.iterdir():
 
         # Move the images to the respective directories
         for img in train_images:
-            shutil.move(str(img), str(train_dir / class_dir.name / img.name))
+            shutil.copy(str(img), str(train_dir / class_dir.name / img.name))
 
         for img in test_images:
-            shutil.move(str(img), str(test_dir / class_dir.name / img.name))
+            shutil.copy(str(img), str(test_dir / class_dir.name / img.name))
 
 print("Images have been split into training and test sets.")
