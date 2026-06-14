@@ -28,7 +28,6 @@ for class_dir in data_dir.iterdir():
         # Get all image files in the class directory
         images = list(class_dir.glob("*.png"))
 
-
         # Split the images
         split_index = int(len(images) * split_ratio)
         train_images = images[:split_index]
