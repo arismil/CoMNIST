@@ -1,9 +1,8 @@
 Model,Macro Accuracy,Macro Precision,Macro Recall,Macro F1
-Main Model (Raw Logits),0.87,0.89,0.87,0.87
-Dropout (32 Batch),0.9,0.9,0.9,0.9
-Dropout (16 Batch),0.9,0.9,0.9,0.9
-Dropout (64 Batch),0.91,0.91,0.91,0.91
-Dropout (MSE Loss),0.9,0.9,0.9,0.9
-Dropout (Softmax),0.9,0.91,0.9,0.9
-Dropout (Sigmoid),0.9,0.9,0.9,0.9
-Comnist Model (Raw Logits),0.9,0.91,0.9,0.9
+Main Model (Raw Logits),0.87,0.88,0.87,0.87
+Dropout (32 Batch),0.89,0.9,0.89,0.89
+Dropout (16 Batch),0.89,0.9,0.89,0.89
+Dropout (64 Batch),0.9,0.9,0.9,0.9
+Dropout (MSE Loss),0.91,0.91,0.91,0.91
+Dropout (Softmax),0.9,0.9,0.9,0.9
+Dropout (Sigmoid),0.9,0.91,0.91,0.9
